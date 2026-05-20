@@ -14,7 +14,6 @@
       --surface:   #ffffff;
       --surface2:  #f0efe9;
       --border:    #e2e0d8;
-      --border2:   #c8c6bc;
       --text:      #1a1917;
       --muted:     #6b6960;
       --faint:     #9e9c94;
@@ -52,43 +51,26 @@
       top: 0;
       z-index: 10;
     }
-    header h1 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-    header p {
-      font-size: 0.78rem;
-      color: #9ca3aa;
-      margin-top: 3px;
-    }
+    header h1 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+    header p  { font-size: 0.78rem; color: #9ca3aa; margin-top: 3px; }
 
-    /* ── Main layout ── */
-    main {
-      max-width: 1260px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 0;
-    }
+    /* ── Main ── */
+    main { max-width: 1320px; margin: 0 auto; padding: 2rem 1.5rem 0; }
 
-    /* ── Section heading ── */
     .section-label {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--faint);
-      margin-bottom: 0.85rem;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 0.85rem;
     }
 
-    /* ── Models grid ── */
+    /* ── Grid ── */
     .models-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 16px;
       margin-bottom: 2rem;
     }
 
-    /* ── Model card ── */
+    /* ── Card ── */
     .model-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -97,176 +79,121 @@
       display: flex;
       flex-direction: column;
     }
-
     .model-head {
-      padding: 1rem 1.25rem 0.75rem;
+      padding: 1rem 1.25rem 0.9rem;
       border-bottom: 1px solid var(--border);
-      background: var(--surface);
     }
     .model-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 6px;
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 5px;
     }
     .model-num {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--faint);
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint);
     }
-    .model-badge {
-      font-size: 0.65rem;
-      font-weight: 500;
-      padding: 2px 8px;
-      border-radius: 99px;
-    }
+    .model-badge { font-size: 0.65rem; font-weight: 500; padding: 2px 8px; border-radius: 99px; }
     .badge-gray  { background: var(--surface2); color: var(--muted); }
     .badge-blue  { background: var(--accent-bg); color: var(--accent-t); }
-    .badge-green { background: var(--green-bg); color: var(--green-t); }
-    .badge-amber { background: var(--amber-bg); color: var(--amber); }
+    .badge-green { background: var(--green-bg);  color: var(--green-t); }
+    .badge-amber { background: var(--amber-bg);  color: var(--amber); }
 
-    .model-name {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-    .formula {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--muted);
+    .model-name { font-size: 0.92rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+
+    /* ── Formula block ── */
+    .formula-block {
       background: var(--surface2);
-      padding: 6px 10px;
       border-radius: var(--radius-sm);
-      line-height: 1.5;
-      word-break: break-all;
+      padding: 10px 12px;
     }
+    .formula-line {
+      display: flex; align-items: center; gap: 4px;
+      flex-wrap: wrap; font-family: var(--mono);
+      font-size: 0.75rem; color: var(--muted); line-height: 2;
+    }
+    /* Inline CSS fraction for C/N */
+    .frac {
+      display: inline-flex; flex-direction: column;
+      align-items: center; vertical-align: middle;
+      font-size: 0.72rem; line-height: 1.1; margin: 0 1px;
+    }
+    .frac-num { border-bottom: 1.5px solid var(--muted); padding: 0 3px 1px; }
+    .frac-den { padding: 1px 3px 0; }
 
-    /* ── Inputs inside card ── */
-    .model-inputs {
-      padding: 1rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
+    /* Variable tokens */
+    .vt { border-radius: 3px; padding: 1px 4px; font-weight: 500; font-size: 0.7rem; }
+    .vt-base { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+    .vt-rag  { background: var(--accent-bg); color: var(--accent-t); }
+    .vt-auto { background: var(--amber-bg);  color: var(--amber); }
+    .vt-k    { background: var(--green-bg);  color: var(--green-t); }
+
+    /* Term descriptions below formula */
+    .formula-terms { margin-top: 9px; display: flex; flex-direction: column; gap: 5px; }
+    .term-row { display: flex; align-items: baseline; gap: 7px; line-height: 1.4; }
+    .term-name {
+      font-family: var(--mono); font-size: 0.65rem; font-weight: 500;
+      color: var(--muted); min-width: 100px; flex-shrink: 0;
     }
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-    .field label {
-      font-size: 0.72rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+    .term-desc { font-size: 0.67rem; color: var(--faint); }
+
+    /* ── Inputs ── */
+    .model-inputs { padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+    .field { display: flex; flex-direction: column; gap: 3px; }
+    .field label { font-size: 0.72rem; color: var(--muted); display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
     .var-key {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--accent);
-      background: var(--accent-bg);
-      padding: 1px 5px;
-      border-radius: 4px;
+      display: inline-block; font-family: var(--mono);
+      font-size: 0.7rem; font-weight: 500; padding: 1px 5px; border-radius: 4px;
     }
+    .vk-base { color: var(--accent); background: var(--accent-bg); }
+    .vk-rag  { color: var(--accent); background: var(--accent-bg); }
+    .vk-auto { color: var(--amber);  background: var(--amber-bg); }
+    .vk-k    { color: var(--green);  background: var(--green-bg); }
+
     .field input[type="number"] {
-      width: 100%;
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: var(--text);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 6px 10px;
-      outline: none;
-      transition: border-color 0.15s;
+      width: 100%; font-family: var(--mono); font-size: 0.82rem;
+      color: var(--text); background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 6px 10px; outline: none; transition: border-color 0.15s;
       -moz-appearance: textfield;
     }
     .field input[type="number"]::-webkit-inner-spin-button,
     .field input[type="number"]::-webkit-outer-spin-button { opacity: 0.4; }
     .field input[type="number"]:focus { border-color: var(--accent); }
 
+    .bench { font-size: 0.6rem; color: var(--faint); margin-left: 2px; }
+
     /* ── Result strip ── */
     .model-result {
-      border-top: 1px solid var(--border);
-      padding: 0.85rem 1.25rem;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      background: var(--surface2);
+      border-top: 1px solid var(--border); padding: 0.85rem 1.25rem;
+      display: flex; align-items: baseline; gap: 8px; background: var(--surface2);
     }
-    .res-label { font-size: 0.72rem; color: var(--muted); flex: 1; }
-    .res-value {
-      font-family: var(--mono);
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: var(--text);
-    }
+    .res-label    { font-size: 0.72rem; color: var(--muted); flex: 1; }
+    .res-value    { font-family: var(--mono); font-size: 1.5rem; font-weight: 500; color: var(--text); }
     .res-currency { font-size: 0.78rem; color: var(--faint); }
 
     /* ── Comparison table ── */
     .comparison {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 2rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2rem;
     }
-    .cmp-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.82rem;
-      margin-top: 0.75rem;
-    }
+    .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 0.75rem; }
     .cmp-table th {
-      text-align: left;
-      font-weight: 500;
-      font-size: 0.7rem;
-      color: var(--faint);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 0 0 8px;
-      border-bottom: 1px solid var(--border);
+      text-align: left; font-weight: 500; font-size: 0.7rem; color: var(--faint);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 0 0 8px; border-bottom: 1px solid var(--border);
     }
     .cmp-table th:not(:first-child) { text-align: right; }
-    .cmp-table td {
-      padding: 9px 0;
-      border-bottom: 1px solid var(--border);
-      color: var(--text);
-    }
+    .cmp-table td { padding: 9px 0; border-bottom: 1px solid var(--border); color: var(--text); }
     .cmp-table tr:last-child td { border-bottom: none; }
-    .cmp-table td:not(:first-child) {
-      text-align: right;
-      font-family: var(--mono);
-    }
+    .cmp-table td:not(:first-child) { text-align: right; font-family: var(--mono); }
     .cmp-table td.name { font-weight: 500; font-size: 0.8rem; }
     .cmp-table td.name small { display: block; font-size: 0.68rem; color: var(--faint); font-weight: 400; }
-    .chip {
-      display: inline-block;
-      font-size: 0.68rem;
-      padding: 2px 7px;
-      border-radius: 99px;
-      font-family: var(--mono);
-      font-weight: 500;
-    }
-    .chip-down  { background: var(--green-bg); color: var(--green-t); }
-    .chip-up    { background: var(--red-bg);   color: var(--red-t); }
-    .chip-zero  { background: var(--surface2); color: var(--faint); }
+    .chip { display: inline-block; font-size: 0.68rem; padding: 2px 7px; border-radius: 99px; font-family: var(--mono); font-weight: 500; }
+    .chip-down { background: var(--green-bg); color: var(--green-t); }
+    .chip-up   { background: var(--red-bg);   color: var(--red-t); }
+    .chip-zero { background: var(--surface2); color: var(--faint); }
 
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      font-size: 0.7rem;
-      color: var(--faint);
-      margin-top: 3rem;
-    }
+    footer { text-align: center; font-size: 0.7rem; color: var(--faint); margin-top: 3rem; }
 
-    /* ── Responsive ── */
     @media (max-width: 640px) {
       header { padding: 1.25rem 1rem; }
       main   { padding: 1.25rem 0.75rem 0; }
@@ -278,16 +205,14 @@
 
 <header>
   <h1>Cost per Ticket — Model Calculator</h1>
-  <p>Enter parameters independently for each model and compare results side by side.</p>
+  <p>Four models of support cost per ticket. Each model has independent parameters. Default values are industry midpoint benchmarks (2024–2025).</p>
 </header>
 
 <main>
-
-  <!-- ── Model cards ── -->
   <p class="section-label" style="margin-top:0.25rem">Models &amp; parameters</p>
   <div class="models-grid">
 
-    <!-- Model 1 -->
+    <!-- MODEL 1 -->
     <div class="model-card">
       <div class="model-head">
         <div class="model-meta">
@@ -295,23 +220,43 @@
           <span class="model-badge badge-gray">Baseline (as-is)</span>
         </div>
         <div class="model-name">CRM + operator cost</div>
-        <div class="formula">CPT = ( C + N × AHT × OHC ) / N</div>
+        <div class="formula-block">
+          <div class="formula-line">
+            CPT₁ =
+            <span class="frac">
+              <span class="frac-num"><span class="vt vt-base">C</span></span>
+              <span class="frac-den"><span class="vt vt-base">N</span></span>
+            </span>
+            +
+            <span class="vt vt-base">AHT</span> · <span class="vt vt-base">OHC</span>
+          </div>
+          <div class="formula-terms">
+            <div class="term-row">
+              <span class="term-name">C / N</span>
+              <span class="term-desc">фиксированные затраты на CRM, распределённые на одно обращение; снижаются по мере роста объёма</span>
+            </div>
+            <div class="term-row">
+              <span class="term-name">AHT · OHC</span>
+              <span class="term-desc">прямая стоимость ручной обработки одного обращения оператором</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="model-inputs">
         <div class="field">
-          <label><span class="var-key">C</span> CRM system cost / month ($)</label>
+          <label><span class="var-key vk-base">C</span> CRM system cost / month ($) <span class="bench">midpoint: $500</span></label>
           <input type="number" id="m1_C" value="500" min="0" step="10" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">N</span> Number of tickets / month</label>
+          <label><span class="var-key vk-base">N</span> Number of tickets / month <span class="bench">midpoint: 1 000</span></label>
           <input type="number" id="m1_N" value="1000" min="1" step="10" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">AHT</span> Avg handle time (hours)</label>
-          <input type="number" id="m1_AHT" value="0.25" min="0" step="0.05" oninput="calc()" />
+          <label><span class="var-key vk-base">AHT</span> Avg handle time (hours) <span class="bench">midpoint: 0.10 h</span></label>
+          <input type="number" id="m1_AHT" value="0.10" min="0" step="0.01" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">OHC</span> Operator hour cost ($)</label>
+          <label><span class="var-key vk-base">OHC</span> Operator hour cost ($) <span class="bench">midpoint: $20</span></label>
           <input type="number" id="m1_OHC" value="20" min="0" step="1" oninput="calc()" />
         </div>
       </div>
@@ -322,7 +267,7 @@
       </div>
     </div>
 
-    <!-- Model 2 -->
+    <!-- MODEL 2 -->
     <div class="model-card">
       <div class="model-head">
         <div class="model-meta">
@@ -330,28 +275,58 @@
           <span class="model-badge badge-blue">RAG copilot</span>
         </div>
         <div class="model-name">Operator + RAG suggestions</div>
-        <div class="formula">CPT = ( C + N × (AHT × OHC + ACS) ) / N</div>
+        <div class="formula-block">
+          <div class="formula-line">
+            CPT₂ =
+            <span class="frac">
+              <span class="frac-num"><span class="vt vt-base">C</span></span>
+              <span class="frac-den"><span class="vt vt-base">N</span></span>
+            </span>
+            +
+            <span class="vt vt-k">k</span> · <span class="vt vt-base">AHT</span> · <span class="vt vt-base">OHC</span>
+            +
+            <span class="vt vt-rag">ACS</span>
+          </div>
+          <div class="formula-terms">
+            <div class="term-row">
+              <span class="term-name">C / N</span>
+              <span class="term-desc">фиксированные затраты на CRM, распределённые на одно обращение</span>
+            </div>
+            <div class="term-row">
+              <span class="term-name">k · AHT · OHC</span>
+              <span class="term-desc">стоимость ручной обработки с учётом снижения AHT: оператор тратит k·AHT часов вместо AHT</span>
+            </div>
+            <div class="term-row">
+              <span class="term-name">ACS</span>
+              <span class="term-desc">стоимость вызова RAG-системы на одно обращение (эмбеддинг + поиск + LLM-инференс)</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="model-inputs">
         <div class="field">
-          <label><span class="var-key">C</span> CRM system cost / month ($)</label>
+          <label><span class="var-key vk-base">C</span> CRM system cost / month ($) <span class="bench">midpoint: $500</span></label>
           <input type="number" id="m2_C" value="500" min="0" step="10" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">N</span> Number of tickets / month</label>
+          <label><span class="var-key vk-base">N</span> Number of tickets / month <span class="bench">midpoint: 1 000</span></label>
           <input type="number" id="m2_N" value="1000" min="1" step="10" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">AHT</span> Avg handle time (hours)</label>
-          <input type="number" id="m2_AHT" value="0.25" min="0" step="0.05" oninput="calc()" />
+          <label><span class="var-key vk-base">AHT</span> Avg handle time (hours) <span class="bench">midpoint: 0.10 h</span></label>
+          <input type="number" id="m2_AHT" value="0.10" min="0" step="0.01" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">OHC</span> Operator hour cost ($)</label>
+          <label><span class="var-key vk-base">OHC</span> Operator hour cost ($) <span class="bench">midpoint: $20</span></label>
           <input type="number" id="m2_OHC" value="20" min="0" step="1" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">ACS</span> Avg RAG suggest cost / ticket ($)</label>
-          <input type="number" id="m2_ACS" value="0.05" min="0" step="0.01" oninput="calc()" />
+          <label><span class="var-key vk-rag">ACS</span> RAG suggest cost / ticket ($) <span class="bench">midpoint: $0.05</span></label>
+          <input type="number" id="m2_ACS" value="0.05" min="0" step="0.005" oninput="calc()" />
+        </div>
+        <div class="field">
+          <label><span class="var-key vk-k">k</span> AHT reduction coeff (0–1) <span class="bench">midpoint: 0.85</span></label>
+          <input type="number" id="m2_k" value="0.85" min="0.01" max="1" step="0.01" oninput="calc()" />
         </div>
       </div>
       <div class="model-result">
@@ -361,7 +336,7 @@
       </div>
     </div>
 
-    <!-- Model 3 -->
+    <!-- MODEL 3 -->
     <div class="model-card">
       <div class="model-head">
         <div class="model-meta">
@@ -369,32 +344,57 @@
           <span class="model-badge badge-amber">Auto-response</span>
         </div>
         <div class="model-name">Auto-response + escalation</div>
-        <div class="formula">CPT = ( C + N × (ARC + (1−AR) × AHT × OHC) ) / N</div>
+        <div class="formula-block">
+          <div class="formula-line">
+            CPT₃ =
+            <span class="frac">
+              <span class="frac-num"><span class="vt vt-base">C</span></span>
+              <span class="frac-den"><span class="vt vt-base">N</span></span>
+            </span>
+            +
+            <span class="vt vt-auto">ARC</span>
+            + (1 − <span class="vt vt-auto">AR</span>) · <span class="vt vt-base">AHT</span> · <span class="vt vt-base">OHC</span>
+          </div>
+          <div class="formula-terms">
+            <div class="term-row">
+              <span class="term-name">C / N</span>
+              <span class="term-desc">фиксированные затраты на CRM, распределённые на одно обращение</span>
+            </div>
+            <div class="term-row">
+              <span class="term-name">ARC</span>
+              <span class="term-desc">стоимость попытки автоответа; применяется ко всему потоку N, независимо от результата</span>
+            </div>
+            <div class="term-row">
+              <span class="term-name">(1−AR)·AHT·OHC</span>
+              <span class="term-desc">взвешенная стоимость ручной обработки: только доля (1−AR) эскалируется к операторам</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="model-inputs">
         <div class="field">
-          <label><span class="var-key">C</span> CRM system cost / month ($)</label>
+          <label><span class="var-key vk-base">C</span> CRM system cost / month ($) <span class="bench">midpoint: $500</span></label>
           <input type="number" id="m3_C" value="500" min="0" step="10" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">N</span> Number of tickets / month</label>
+          <label><span class="var-key vk-base">N</span> Number of tickets / month <span class="bench">midpoint: 1 000</span></label>
           <input type="number" id="m3_N" value="1000" min="1" step="10" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">AHT</span> Avg handle time (hours)</label>
-          <input type="number" id="m3_AHT" value="0.25" min="0" step="0.05" oninput="calc()" />
+          <label><span class="var-key vk-base">AHT</span> Avg handle time (hours) <span class="bench">midpoint: 0.10 h</span></label>
+          <input type="number" id="m3_AHT" value="0.10" min="0" step="0.01" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">OHC</span> Operator hour cost ($)</label>
+          <label><span class="var-key vk-base">OHC</span> Operator hour cost ($) <span class="bench">midpoint: $20</span></label>
           <input type="number" id="m3_OHC" value="20" min="0" step="1" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">ARC</span> Auto-response cost / ticket ($)</label>
-          <input type="number" id="m3_ARC" value="0.02" min="0" step="0.01" oninput="calc()" />
+          <label><span class="var-key vk-auto">ARC</span> Auto-response cost / ticket ($) <span class="bench">midpoint: $0.01</span></label>
+          <input type="number" id="m3_ARC" value="0.01" min="0" step="0.001" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">AR</span> Automation rate (0 – 1)</label>
-          <input type="number" id="m3_AR" value="0.4" min="0" max="1" step="0.05" oninput="calc()" />
+          <label><span class="var-key vk-auto">AR</span> Automation rate (0–1) <span class="bench">midpoint: 0.40</span></label>
+          <input type="number" id="m3_AR" value="0.40" min="0" max="1" step="0.05" oninput="calc()" />
         </div>
       </div>
       <div class="model-result">
@@ -404,44 +404,73 @@
       </div>
     </div>
 
-    <!-- Model 4 -->
+    <!-- MODEL 4 -->
     <div class="model-card">
       <div class="model-head">
         <div class="model-meta">
           <span class="model-num">Model 4</span>
-          <span class="model-badge badge-green">Full RAG + auto</span>
+          <span class="model-badge badge-green">Auto + RAG</span>
         </div>
         <div class="model-name">Auto-response + RAG suggestions</div>
-        <div class="formula">CPT = ( C + N × (ARC + (1−AR) × (AHT × OHC + ACS)) ) / N</div>
+        <div class="formula-block">
+          <div class="formula-line">
+            CPT₄ =
+            <span class="frac">
+              <span class="frac-num"><span class="vt vt-base">C</span></span>
+              <span class="frac-den"><span class="vt vt-base">N</span></span>
+            </span>
+            +
+            <span class="vt vt-auto">ARC</span>
+            + (1 − <span class="vt vt-auto">AR</span>) · (<span class="vt vt-k">k</span> · <span class="vt vt-base">AHT</span> · <span class="vt vt-base">OHC</span> + <span class="vt vt-rag">ACS</span>)
+          </div>
+          <div class="formula-terms">
+            <div class="term-row">
+              <span class="term-name">C / N</span>
+              <span class="term-desc">фиксированные затраты на CRM, распределённые на одно обращение</span>
+            </div>
+            <div class="term-row">
+              <span class="term-name">ARC</span>
+              <span class="term-desc">стоимость попытки автоответа; применяется ко всему потоку N</span>
+            </div>
+            <div class="term-row">
+              <span class="term-name">(1−AR)·(…)</span>
+              <span class="term-desc">стоимость обработки эскалированных обращений с RAG-подсказками и сниженным AHT</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="model-inputs">
         <div class="field">
-          <label><span class="var-key">C</span> CRM system cost / month ($)</label>
+          <label><span class="var-key vk-base">C</span> CRM system cost / month ($) <span class="bench">midpoint: $500</span></label>
           <input type="number" id="m4_C" value="500" min="0" step="10" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">N</span> Number of tickets / month</label>
+          <label><span class="var-key vk-base">N</span> Number of tickets / month <span class="bench">midpoint: 1 000</span></label>
           <input type="number" id="m4_N" value="1000" min="1" step="10" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">AHT</span> Avg handle time (hours)</label>
-          <input type="number" id="m4_AHT" value="0.25" min="0" step="0.05" oninput="calc()" />
+          <label><span class="var-key vk-base">AHT</span> Avg handle time (hours) <span class="bench">midpoint: 0.10 h</span></label>
+          <input type="number" id="m4_AHT" value="0.10" min="0" step="0.01" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">OHC</span> Operator hour cost ($)</label>
+          <label><span class="var-key vk-base">OHC</span> Operator hour cost ($) <span class="bench">midpoint: $20</span></label>
           <input type="number" id="m4_OHC" value="20" min="0" step="1" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">ACS</span> Avg RAG suggest cost / ticket ($)</label>
-          <input type="number" id="m4_ACS" value="0.05" min="0" step="0.01" oninput="calc()" />
+          <label><span class="var-key vk-rag">ACS</span> RAG suggest cost / ticket ($) <span class="bench">midpoint: $0.05</span></label>
+          <input type="number" id="m4_ACS" value="0.05" min="0" step="0.005" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">ARC</span> Auto-response cost / ticket ($)</label>
-          <input type="number" id="m4_ARC" value="0.02" min="0" step="0.01" oninput="calc()" />
+          <label><span class="var-key vk-auto">ARC</span> Auto-response cost / ticket ($) <span class="bench">midpoint: $0.01</span></label>
+          <input type="number" id="m4_ARC" value="0.01" min="0" step="0.001" oninput="calc()" />
         </div>
         <div class="field">
-          <label><span class="var-key">AR</span> Automation rate (0 – 1)</label>
-          <input type="number" id="m4_AR" value="0.4" min="0" max="1" step="0.05" oninput="calc()" />
+          <label><span class="var-key vk-auto">AR</span> Automation rate (0–1) <span class="bench">midpoint: 0.40</span></label>
+          <input type="number" id="m4_AR" value="0.40" min="0" max="1" step="0.05" oninput="calc()" />
+        </div>
+        <div class="field">
+          <label><span class="var-key vk-k">k</span> AHT reduction coeff (0–1) <span class="bench">midpoint: 0.85</span></label>
+          <input type="number" id="m4_k" value="0.85" min="0.01" max="1" step="0.01" oninput="calc()" />
         </div>
       </div>
       <div class="model-result">
@@ -453,7 +482,7 @@
 
   </div><!-- /models-grid -->
 
-  <!-- ── Comparison table ── -->
+  <!-- Comparison table -->
   <div class="comparison">
     <p class="section-label" style="margin:0 0 0.1rem">Results comparison</p>
     <table class="cmp-table">
@@ -469,64 +498,56 @@
     </table>
   </div>
 
-  <footer>Cost per Ticket Calculator &mdash; all calculations run locally in your browser.</footer>
-
+  <footer>Cost per Ticket Calculator &mdash; all calculations run locally in your browser &mdash; default values: industry midpoint benchmarks (2024–2025)</footer>
 </main>
 
 <script>
   function v(id) { return parseFloat(document.getElementById(id).value) || 0; }
-
-  function cpt(total, N) { return N > 0 ? total / N : 0; }
+  function clamp(x, lo, hi) { return Math.min(hi, Math.max(lo, x)); }
 
   function calc() {
-    const N1 = v('m1_N'), N2 = v('m2_N'), N3 = v('m3_N'), N4 = v('m4_N');
+    const N1 = v('m1_N') || 1, N2 = v('m2_N') || 1;
+    const N3 = v('m3_N') || 1, N4 = v('m4_N') || 1;
 
-    const totals = [
-      v('m1_C') + N1 * v('m1_AHT') * v('m1_OHC'),
-      v('m2_C') + N2 * (v('m2_AHT') * v('m2_OHC') + v('m2_ACS')),
-      v('m3_C') + N3 * (v('m3_ARC') + (1 - Math.min(1, Math.max(0, v('m3_AR')))) * v('m3_AHT') * v('m3_OHC')),
-      v('m4_C') + N4 * (v('m4_ARC') + (1 - Math.min(1, Math.max(0, v('m4_AR')))) * (v('m4_AHT') * v('m4_OHC') + v('m4_ACS')))
+    const AR3 = clamp(v('m3_AR'), 0, 1);
+    const AR4 = clamp(v('m4_AR'), 0, 1);
+    const k2  = clamp(v('m2_k'),  0.01, 1);
+    const k4  = clamp(v('m4_k'),  0.01, 1);
+
+    const cpts = [
+      v('m1_C') / N1 + v('m1_AHT') * v('m1_OHC'),
+      v('m2_C') / N2 + k2 * v('m2_AHT') * v('m2_OHC') + v('m2_ACS'),
+      v('m3_C') / N3 + v('m3_ARC') + (1 - AR3) * v('m3_AHT') * v('m3_OHC'),
+      v('m4_C') / N4 + v('m4_ARC') + (1 - AR4) * (k4 * v('m4_AHT') * v('m4_OHC') + v('m4_ACS'))
     ];
-    const Ns = [N1, N2, N3, N4];
-    const cpts = totals.map((t, i) => cpt(t, Ns[i]));
 
-    const ids = ['res1','res2','res3','res4'];
-    ids.forEach((id, i) => {
+    const totals = [ cpts[0]*N1, cpts[1]*N2, cpts[2]*N3, cpts[3]*N4 ];
+
+    ['res1','res2','res3','res4'].forEach((id, i) => {
       document.getElementById(id).textContent = cpts[i].toFixed(4);
     });
 
     const names = [
-      ['Model 1', 'Baseline (as-is)'],
-      ['Model 2', 'RAG copilot'],
-      ['Model 3', 'Auto-response'],
-      ['Model 4', 'Auto-response + RAG']
+      ['Model 1','Baseline (as-is)'],
+      ['Model 2','RAG copilot'],
+      ['Model 3','Auto-response'],
+      ['Model 4','Auto-response + RAG']
     ];
 
-    const body = document.getElementById('cmp-body');
-    body.innerHTML = '';
-    cpts.forEach((c, i) => {
+    document.getElementById('cmp-body').innerHTML = cpts.map((c, i) => {
       const delta = i === 0 ? null : c - cpts[0];
-      const monthly = totals[i];
-
       let chip = '';
-      if (delta === null) {
-        chip = '<span class="chip chip-zero">baseline</span>';
-      } else if (Math.abs(delta) < 0.00005) {
-        chip = '<span class="chip chip-zero">no change</span>';
-      } else if (delta < 0) {
-        chip = `<span class="chip chip-down">−$${Math.abs(delta).toFixed(4)}</span>`;
-      } else {
-        chip = `<span class="chip chip-up">+$${delta.toFixed(4)}</span>`;
-      }
-
-      body.innerHTML += `
-        <tr>
-          <td class="name">${names[i][0]}<small>${names[i][1]}</small></td>
-          <td>$${c.toFixed(4)}</td>
-          <td>$${monthly.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-          <td>${chip}</td>
-        </tr>`;
-    });
+      if (delta === null)             chip = '<span class="chip chip-zero">baseline</span>';
+      else if (Math.abs(delta) < 5e-5) chip = '<span class="chip chip-zero">no change</span>';
+      else if (delta < 0)             chip = `<span class="chip chip-down">−$${Math.abs(delta).toFixed(4)}</span>`;
+      else                            chip = `<span class="chip chip-up">+$${delta.toFixed(4)}</span>`;
+      return `<tr>
+        <td class="name">${names[i][0]}<small>${names[i][1]}</small></td>
+        <td>$${c.toFixed(4)}</td>
+        <td>$${totals[i].toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}</td>
+        <td>${chip}</td>
+      </tr>`;
+    }).join('');
   }
 
   calc();
